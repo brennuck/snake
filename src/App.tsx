@@ -1,7 +1,6 @@
 import { memo } from "react";
 import GameBoard from "./components/GameBoard";
 import useGameLogic from "./hooks/useGameLogic";
-import "./App.css";
 
 const App = memo(() => {
     const { snake, food, score, isGameOver, resetGame } = useGameLogic();
@@ -9,7 +8,7 @@ const App = memo(() => {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
             <div className="text-center mb-4">
-                <h1 className="text-4xl font-bold mb-2">Snake Game</h1>
+                <h1 className="text-4xl font-bold mb-2">Snake</h1>
                 <p className="text-xl mb-4">Score: {score}</p>
             </div>
 
