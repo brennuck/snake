@@ -151,6 +151,28 @@ const useGameLogic = () => {
         });
     }, []);
 
+    const changeDirection = useCallback((direction: Direction) => {
+        setGameState((prevState) => {
+            if (prevState.isGameOver) return prevState;
+
+            const opposites = {
+                UP: "DOWN",
+                DOWN: "UP",
+                LEFT: "RIGHT",
+                RIGHT: "LEFT",
+            };
+
+            if (direction === opposites[prevState.direction]) {
+                return prevState;
+            }
+
+            return {
+                ...prevState,
+                nextDirection: direction,
+            };
+        });
+    }, []);
+
     const resetGame = useCallback(() => {
         setGameState(initialState);
     }, []);
@@ -173,6 +195,7 @@ const useGameLogic = () => {
         score: gameState.score,
         isGameOver: gameState.isGameOver,
         resetGame,
+        changeDirection,
     };
 };
 

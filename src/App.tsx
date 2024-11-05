@@ -1,9 +1,15 @@
 import { memo } from "react";
 import GameBoard from "./components/GameBoard";
 import useGameLogic from "./hooks/useGameLogic";
+import ArrowKeys from "./components/ArrowKeys";
+import { Direction } from "./types/game";
 
 const App = memo(() => {
-    const { snake, food, score, isGameOver, resetGame } = useGameLogic();
+    const { snake, food, score, isGameOver, resetGame, changeDirection } = useGameLogic();
+
+    const handleDirectionChange = (direction: string) => {
+        changeDirection(direction as Direction);
+    };
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -25,6 +31,8 @@ const App = memo(() => {
                     </button>
                 </div>
             )}
+
+            <ArrowKeys onDirectionChange={handleDirectionChange} />
 
             <div className="mt-4 text-sm text-gray-600">Use arrow keys to control the snake</div>
         </div>
