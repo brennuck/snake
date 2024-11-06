@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { Position, CELL_SIZE, GRID_SIZE } from "../types/game";
+import useGameLogic from "../hooks/useGameLogic";
 
 type GameBoardProps = {
     snake: Position[];
@@ -7,40 +8,36 @@ type GameBoardProps = {
 };
 
 const GameBoard = memo(({ snake, food }: GameBoardProps) => {
+    const { calculateCellSize } = useGameLogic();
+    const cellSize = calculateCellSize() || CELL_SIZE;
+
     return (
         <div
+            className="relative border-2 border-gray-800 bg-gray-200"
             style={{
-                width: GRID_SIZE * CELL_SIZE,
-                height: GRID_SIZE * CELL_SIZE,
-                border: "2px solid #333",
-                position: "relative",
-                backgroundColor: "#f0f0f0",
+                width: GRID_SIZE * cellSize,
+                height: GRID_SIZE * cellSize,
             }}
         >
             {snake.map((segment, index) => (
                 <div
                     key={`${segment.x}-${segment.y}-${index}`}
+                    className={`absolute border ${index === 0 ? "bg-gray-800" : "bg-gray-700"} border-gray-800`}
                     style={{
-                        position: "absolute",
-                        width: CELL_SIZE - 2,
-                        height: CELL_SIZE - 2,
-                        backgroundColor: index === 0 ? "#2c3e50" : "#34495e",
-                        border: "1px solid #2c3e50",
-                        left: segment.x * CELL_SIZE,
-                        top: segment.y * CELL_SIZE,
+                        width: cellSize - 2,
+                        height: cellSize - 2,
+                        left: segment.x * cellSize,
+                        top: segment.y * cellSize,
                     }}
                 />
             ))}
             <div
+                className="absolute bg-red-500 border border-red-700 rounded-full"
                 style={{
-                    position: "absolute",
-                    width: CELL_SIZE - 2,
-                    height: CELL_SIZE - 2,
-                    backgroundColor: "#e74c3c",
-                    border: "1px solid #c0392b",
-                    left: food.x * CELL_SIZE,
-                    top: food.y * CELL_SIZE,
-                    borderRadius: "50%",
+                    width: cellSize - 2,
+                    height: cellSize - 2,
+                    left: food.x * cellSize,
+                    top: food.y * cellSize,
                 }}
             />
         </div>

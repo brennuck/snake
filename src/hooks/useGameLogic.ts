@@ -177,6 +177,13 @@ const useGameLogic = () => {
         setGameState(initialState);
     }, []);
 
+    const calculateCellSize = () => {
+        const screenWidth = window.innerWidth;
+        const maxGridSize = Math.min(screenWidth, 400); // Limit the grid size to a maximum of 400px
+        const calculatedSize = Math.floor(maxGridSize / GRID_SIZE);
+        return Math.max(calculatedSize, 15); // Ensure the cell size is at least 15
+    };
+
     useEffect(() => {
         window.addEventListener("keydown", handleKeyPress);
         gameLoopRef.current = requestAnimationFrame(updateGame);
@@ -196,6 +203,7 @@ const useGameLogic = () => {
         isGameOver: gameState.isGameOver,
         resetGame,
         changeDirection,
+        calculateCellSize,
     };
 };
 
