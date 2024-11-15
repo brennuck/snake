@@ -32,9 +32,12 @@ const App = memo(() => {
                 </div>
             )}
 
-            <ArrowKeys onDirectionChange={handleDirectionChange} />
-
-            <div className="mt-4 text-sm text-gray-600">Use arrow keys to control the snake</div>
+            {!isGameOver && (
+                <>
+                    <ArrowKeys onDirectionChange={handleDirectionChange} />
+                    <div className="mt-4 text-sm text-gray-600">Use arrow keys to control the snake</div>
+                </>
+            )}
         </div>
     );
 });
