@@ -12,6 +12,7 @@ export type GameState = {
     nextDirection: Direction;
     isGameOver: boolean;
     score: number;
+    isGameStarted: boolean;
 };
 
 export const GRID_SIZE = 20;

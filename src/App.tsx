@@ -5,7 +5,7 @@ import ArrowKeys from "./components/ArrowKeys";
 import { Direction } from "./types/game";
 
 const App = memo(() => {
-    const { snake, food, score, isGameOver, resetGame, changeDirection } = useGameLogic();
+    const { snake, food, score, isGameOver, isGameStarted, resetGame, startGame, changeDirection } = useGameLogic();
 
     const handleDirectionChange = (direction: string) => {
         changeDirection(direction as Direction);
@@ -129,26 +129,34 @@ const App = memo(() => {
                 <p className="text-xl mb-4">Score: {score}</p>
             </div>
 
-            <GameBoard snake={snake} food={food} />
+            <GameBoard snake={snake} food={food} isGameStarted={isGameStarted} />
 
-            {isGameOver && (
-                <div className="mt-4 text-center">
-                    <p className="text-xl font-bold text-red-600 mb-2">Game Over!</p>
-                    <button
-                        onClick={resetGame}
-                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-                    >
-                        Play Again
-                    </button>
-                </div>
-            )}
+            <div className="h-32 flex items-center justify-center">
+                {!isGameStarted && !isGameOver && (
+                    <div className="text-center">
+                        <button
+                            onClick={startGame}
+                            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                        >
+                            Play Game
+                        </button>
+                    </div>
+                )}
 
-            {!isGameOver && (
-                <>
-                    <ArrowKeys onDirectionChange={handleDirectionChange} />
-                    <div className="mt-4 text-sm text-gray-600">Use arrow keys to control the snake</div>
-                </>
-            )}
+                {isGameOver && (
+                    <div className="text-center">
+                        <p className="text-xl font-bold text-red-600 mb-2">Game Over!</p>
+                        <button
+                            onClick={resetGame}
+                            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                        >
+                            Play Again
+                        </button>
+                    </div>
+                )}
+
+                {isGameStarted && !isGameOver && <ArrowKeys onDirectionChange={handleDirectionChange} />}
+            </div>
         </div>
     );
 });

@@ -7,12 +7,13 @@ const getRandomPosition = (): Position => ({
 });
 
 const initialState: GameState = {
-    snake: [{ x: 8, y: 8 }],
-    food: getRandomPosition(),
+    snake: [],
+    food: { x: -1, y: -1 },
     direction: "RIGHT",
     nextDirection: "RIGHT",
     isGameOver: false,
     score: 0,
+    isGameStarted: false,
 };
 
 const useGameLogic = () => {
@@ -173,8 +174,22 @@ const useGameLogic = () => {
         });
     }, []);
 
+    const startGame = useCallback(() => {
+        setGameState({
+            ...initialState,
+            snake: [{ x: 8, y: 8 }],
+            food: getRandomPosition(),
+            isGameStarted: true,
+        });
+    }, []);
+
     const resetGame = useCallback(() => {
-        setGameState(initialState);
+        setGameState({
+            ...initialState,
+            snake: [{ x: 8, y: 8 }],
+            food: getRandomPosition(),
+            isGameStarted: true,
+        });
     }, []);
 
     const calculateCellSize = () => {
@@ -185,6 +200,13 @@ const useGameLogic = () => {
     };
 
     useEffect(() => {
+        if (!gameState.isGameStarted) {
+            if (gameLoopRef.current) {
+                cancelAnimationFrame(gameLoopRef.current);
+            }
+            return;
+        }
+
         window.addEventListener("keydown", handleKeyPress);
         gameLoopRef.current = requestAnimationFrame(updateGame);
 
@@ -194,14 +216,16 @@ const useGameLogic = () => {
                 cancelAnimationFrame(gameLoopRef.current);
             }
         };
-    }, [handleKeyPress, updateGame]);
+    }, [handleKeyPress, updateGame, gameState.isGameStarted]);
 
     return {
         snake: gameState.snake,
         food: gameState.food,
         score: gameState.score,
         isGameOver: gameState.isGameOver,
+        isGameStarted: gameState.isGameStarted,
         resetGame,
+        startGame,
         changeDirection,
         calculateCellSize,
     };

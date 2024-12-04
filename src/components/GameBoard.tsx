@@ -5,9 +5,10 @@ import useGameLogic from "../hooks/useGameLogic";
 type GameBoardProps = {
     snake: Position[];
     food: Position;
+    isGameStarted: boolean;
 };
 
-const GameBoard = memo(({ snake, food }: GameBoardProps) => {
+const GameBoard = memo(({ snake, food, isGameStarted }: GameBoardProps) => {
     const { calculateCellSize } = useGameLogic();
     const cellSize = calculateCellSize() || CELL_SIZE;
 
@@ -31,15 +32,17 @@ const GameBoard = memo(({ snake, food }: GameBoardProps) => {
                     }}
                 />
             ))}
-            <div
-                className="absolute bg-red-500 border border-red-700 rounded-full"
-                style={{
-                    width: cellSize - 2,
-                    height: cellSize - 2,
-                    left: food.x * cellSize,
-                    top: food.y * cellSize,
-                }}
-            />
+            {isGameStarted && (
+                <div
+                    className="absolute bg-red-500 border border-red-700 rounded-full"
+                    style={{
+                        width: cellSize - 2,
+                        height: cellSize - 2,
+                        left: food.x * cellSize,
+                        top: food.y * cellSize,
+                    }}
+                />
+            )}
         </div>
     );
 });
