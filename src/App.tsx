@@ -14,7 +14,118 @@ const App = memo(() => {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
             <div className="text-center mb-4">
-                <h1 className="text-4xl font-bold mb-2">Snake</h1>
+                <div className="flex justify-center gap-1 mb-2">
+                    {/* S */}
+                    <div className="flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                    </div>
+                    {/* N */}
+                    <div className="ml-2 flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                    </div>
+                    {/* A */}
+                    <div className="ml-2 flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                    </div>
+                    {/* K */}
+                    <div className="ml-2 flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                    </div>
+                    {/* E */}
+                    <div className="ml-2 flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                        <div className="w-4 h-4 bg-transparent"></div>
+                        <div className="w-4 h-4 bg-gray-800"></div>
+                    </div>
+                </div>
                 <p className="text-xl mb-4">Score: {score}</p>
             </div>
 
